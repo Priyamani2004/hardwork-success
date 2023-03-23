@@ -10,7 +10,7 @@ body,html{
     width: 100vw;
     padding: 0;
     margin: 0; 
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #whole_container{
@@ -101,11 +101,18 @@ body,html{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border: 1px solid #80808017;
     font-size: 23px;
-    padding:100px;
+    padding:80px;
     line-height: 45px;
     word-spacing: 3px;
     text-overflow: ellipsis;
+    position: relative;
 }
+  
+/* #writetext span {
+    position: absolute;
+    top: -20px; 
+    left: 20px; 
+  } */
 
 #writetext:focus {
     border: none;

@@ -15,6 +15,7 @@ let wholeElement=document.getElementById("text_contentdiv");
 // });
 
   function textcreate(element){
+    console.log(contentEditableDiv.childNodes)
     let getid=Number(element.className);
     console.log(getid)
     let collectAlldiv=document.querySelectorAll('#writetext');
@@ -56,3 +57,18 @@ let wholeElement=document.getElementById("text_contentdiv");
       }
     }
 
+    // $(document).ready(function() {
+    //   $("#contenteditable-div").on("blur", function() {
+    //     // Get the position of the end of the contenteditable div
+    //     var endPosition = this.getBoundingClientRect().bottom;
+    
+    //     // Get the position of the element that comes after the contenteditable div
+    //     var clearElementPosition = $("#clear-after-div")[0].getBoundingClientRect().top;
+    
+    //     // If the end of the contenteditable div is below the clear element, clear the text
+    //     if (endPosition > clearElementPosition) {
+    //       $("#clear-after-div").text("");
+    //     }
+    //   });
+    // });
+    
