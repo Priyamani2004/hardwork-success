@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/4d300accb8.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+   <div id="login_container">
+    <div id="mini_login">
+        <div id="login_box">
+            <div id="create_account">
+               <div class="create_head">
+                <i class="fa-solid fa-file-pen icon"></i> 
+                <h3 class="writer">Writer</h3>
+               </div> 
+               <h1 class="titles">Sign Up</h1>
+
+               <!-- signup -->
+               <div class="signup_detail" id="signup">
+                 <div>
+                    <p class="input_head">Username</p>
+                    <span class="errormsg errmsg1">Can't be empty</span>
+                    <input class="inputfield" id="signupname" type="text"/>
+                 </div>
+                 <div>
+                    <p class="input_head">email</p>
+                    <span class="errormsg errmsg2">Can't be empty</span>
+                    <input class="inputfield" id="signupemail" type="email"/>
+                 </div>
+                 <div>
+                    <p class="input_head">Password</p>
+                    <span class="errormsg errmsg3">Can't be empty</span>
+                    <input class="inputfield" id="signuppassword" type="password"/>
+                 </div>
+                 <div class="submitbox">
+                  <span class="errormsg errmsg6">This Email has been already taken</span>
+                    <button class="submitbtn" id="signupsubmit">Signup</button>
+                 </div>
+               </div>
+
+               <!-- login -->
+               <div class="signup_detail" id="signin">
+                 <div>
+                    <p class="input_head">email</p>
+                    <span class="errormsg errmsg4">Can't be empty</span>
+                    <input class="inputfield" id="loginemail" type="email"/>
+                 </div>
+                 <div>
+                    <p class="input_head">Password</p>
+                    <span class="errormsg errmsg5">Can't be empty</span>
+                    <input class="inputfield" id="loginpassword" type="password"/>
+                 </div>
+                 <div class="submitbox">
+                  <span class="errormsg errmsg7 errmsg6">Invalid User</span>
+                    <button class="submitbtn" id="loginsubmit">login</button>
+                 </div>
+               </div>
+            </div>
+            <div id="Set_picture">
+                <img src="assets/writing.png" class="writeimg"/>
+                <div class="changetheme">
+                <p class="changeline">Already have an account?</p><span class="spanchange" onclick="changepage()" style="color:#4190F2">Sign In</span>
+            </div>
+            </div>
+        </div>
+    </div>
+   </div>
+   <script src="js/login.js"></script>
+</body>
+</html>
