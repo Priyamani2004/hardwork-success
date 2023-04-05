@@ -123,6 +123,7 @@ function checkusers(data){
                     email:email,
                     password:password, 
                 }
+                localStorage.setItem('email',email)
                 pushsignupvalues(userdetail);
                 $("#signupname").val('');
                 $("#signupemail").val('');
@@ -181,10 +182,12 @@ function checklogin(data){
     let count=0;
     for(let i=0; i<data.length; i++){
         if(password.toUpperCase().trim()==data[i].password.toUpperCase().trim() && email.toUpperCase().trim()==data[i].email.toUpperCase().trim()){
+            localStorage.setItem('email',email)
+            showwriter(email)
             $('.errmsg7').css('display','none'); 
             $("#loginpassword").val('');
             $("#loginemail").val('');
-            showwriter()
+            
         }
         else{
           count++
@@ -195,14 +198,14 @@ function checklogin(data){
     }
 }
 
-function showwriter(){
+function showwriter(email){
     fetch('cookieshow',{
         method:'POST',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name:'mani'})
+        body: JSON.stringify({email:email})
    })
    .then((response) => {return response.json()})
       .then((data) => {

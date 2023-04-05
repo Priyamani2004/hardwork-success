@@ -29,7 +29,41 @@
             <p class="headings">Favorites</p>
             <p class="headings">Trash</p>
         </div>
-        <div id="create_documents"></div>
+        <div id="create_documents">
+            <div id="selecttitle"></div>
+            <div id="documentscontainer">
+                <% for(let i=0; i< result.length; i++){%>
+                    <div id="hovershowele">
+                        <div class="document_box">
+                            <form action="showtextpage" method="post">
+                            <button id="text_page" value="mani" name="idvalue">
+                                <i class="fa-solid fa-file-pen icon"></i>  
+                            </button>
+                            
+                        </form>
+                        </div>
+                        <div id="document_name">
+                            <i class="fa-regular fa-file docicon"></i>
+                            <input type="text" id="document_title" value="Untitled Document"/>
+                        </div>
+                        <div id="create_dateimg">
+                            <div></div>
+                            <p></p>
+                            <div class="focus_show flex">
+                            <div id="ellipsis_icon" class="flex"><i class="fa-solid fa-ellipsis ellipsis"></i></div>
+                            <ul id="options_ul">
+                                <li>Rename</li>
+                                <li>Add to Favorites</li>
+                                <li>Move to Trash</li>
+                            </ul>
+                        </div>
+                        </div>
+                       </div>
+               <% } %>
+               
+                
+            </div>
+        </div>
     </div>
 </div>
 

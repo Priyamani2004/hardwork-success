@@ -1,6 +1,6 @@
 const express=require('express');
 const app=express();
-const port=5158;
+const port=5160;
 const database=require('mysql');
 const bodyParser=require('body-parser');
 const path=require('path');
@@ -29,10 +29,26 @@ app.set('view engine','ejs');
 app.set('views'),path.join(__dirname,'views');
 
 app.use(bodyParser.json());
+
+let email='onlytesting404@gmail.com';
+
+
 app.get('/index',(req,res)=>{
     const myCookie = req.cookies['Cookie writer name'];
     if(myCookie){
-        res.render('index');  
+        console.log(email);
+        let sql=`SELECT * FROM writerpages WHERE email= '${email}'`;
+        connection.query(sql,(err,result)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                console.log(result[1])
+                res.render('index',{result:result});  
+            }
+           
+        })
+       
     }
     else{
       res.render('login');
@@ -70,9 +86,9 @@ app.post('/checkdbvalues',(req,res)=>{
 })
 
 app.post('/signupvalues',(req,res)=>{
-   console.log(req.body);
    let name=req.body.username;
-   let email=req.body.email;
+   email=req.body.email;
+   console.log(email)
    let password=req.body.password;
    let sql= `insert into writeruser (name,email,password) values ('${name}','${email}','${password}')`
    connection.query(sql,(err,resl)=>{
@@ -94,6 +110,8 @@ app.post('/signupvalues',(req,res)=>{
 })
 
 app.post('/cookieshow',(req,res)=>{
+    email=req.body.email;
+    console.log(email)
     const oneDay = 24 * 60 * 60 * 1000;
         const expiresdate = new Date(Date.now() + oneDay);
         res.cookie(`Cookie writer name`,`encrypted cookie string Value`,{
@@ -109,5 +127,32 @@ app.post("/deletecookie",(req,res)=>{
     res.clearCookie(`Cookie writer name`);
     return res.redirect("/login");
   })
+
+app.post("/textvalues",(req,res)=>{
+  let innerhtml=req.body.pagevalue;
+  let email=req.body.email;
+  let sql=`insert into writerpages (email,document) values ('${email}','${innerhtml}')`;
+  connection.query(sql,(err,result)=>{
+    if(err){
+        console.log(err)
+    }
+    else{
+        console.log(result);
+        res.json(result);
+    }
+  })
+})
+
+app.post('/getdbnodes',(req,res)=>{
+    console.log(email);
+    let sql=`SELECT * FROM writerpages WHERE email= '${email}'`;
+    connection.query(sql,(req,resuls)=>{
+       res.json(resuls);
+    })
+})
+
+app.post('/showtextpage',(req,res)=>{
+    console.log(req.body.idvalue)
+})
 
 app.listen(port,()=>console.log('listening server',port));

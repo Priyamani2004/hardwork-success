@@ -8,7 +8,6 @@ let wholeElement=document.getElementById("text_contentdiv");
     console.log(getid)
     let collectAlldiv=document.querySelectorAll('#writetext');
     let textcontentlength=collectAlldiv.length;
-    //visible element function//
     const visibleElements = [];
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -46,9 +45,80 @@ let wholeElement=document.getElementById("text_contentdiv");
     }
 
 
+//store contentdiv pages innerhtml//
+let data=[];
+let parentelement=document.getElementById("text_contentdiv");
+function storgepages(){
+  let textpages=document.querySelectorAll("#writetext");
+  textpages.forEach((pages)=>{
+    data.push(pages.innerHTML+' Nextpage');
+  })
+  console.log(data)
+  let emailid=localStorage.getItem('email')
+  let datas={
+    pagevalue:data,
+    email:emailid
+  }
+  fetch('textvalues',{
+    method:'POST',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datas)
+})
+.then((response)=>{
+ return response.json()
+})
+.then((values)=>{
+  window.location.href='index';
+  createnewpage(data)
+})
+}
+let documentscontainer=document.getElementById('documentscontainer');
+function createnewpage(data){
+  console.log(data[0])
+  let creatediv=document.createElement('div');
+  creatediv.setAttribute('contenteditable','true')
+  creatediv.setAttribute('class','document_box');
+  documentscontainer.appendChild(creatediv);
+  creatediv.innerHTML=data[0].innerhtml;
+}
 
+// function myfunction(){
+//   let detail={
+//     name:'mani',
+//     id:'1'
+//   }
+//   fetch('getdbnodes',{
+//     method:'POST',
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(detail)
+// })
+// .then((response)=>{
+//   return response.json()
+//  })
+//  .then((values)=>{
+//    console.log(values)
+//    showinnertext(values)
+//  })
+// };
 
+// // function showinnertext(values){
+// //    let innerHTMLdiv=document.querySelectorAll('#text_page');
+// //    console.log(innerHTMLdiv.length);
+// //    for(let i=0; i<innerHTMLdiv.length; i++){
+// //     let elements=values[i].document.split(' Nextpage');
+// //     console.log(elements);
+// //     console.log(elements[0]);
+// //     innerHTMLdiv[i].innerHTML=values[i].document;
+// //     console.log(typeof(values[i].document))
+// //    }
+// // }
 
-
-
-
+// window.onload=function(){
+//   myfunction()
+// }

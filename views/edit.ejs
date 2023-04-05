@@ -7,14 +7,32 @@
     <title>Document</title>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/4d300accb8.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="create_edit_page">
-    <div></div>
+    <div id="titles">
+      <div class="first_row">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-file-pen icon"></i> 
+        <i class="fa-regular fa-star"></i>
+        <input id="titlename" type="text" value="Untitled Document"/>
+      </div>
+      <div class="second_row">
+        <button id="savenbtn" onclick="storgepages()">Save</button>
+      </div>
+    </div>
     <div id="textedit_page">
         <div id="edittools"></div>
         <div id="text_contentdiv" contenteditable="false">
-            <div id="writetext"  onkeydown="textcreate(this)" oninput="textcreate(this)" class="1" contenteditable="true"></div>
+            <div id="writetext"  onkeydown="textcreate(this)" oninput="textcreate(this)" class="1" contenteditable="true">
+            <img src="assets/write.png" class="picture"/>
+        <a href="https://www.codewars.com/kata/55c6126177c9441a570000cc/train/javascript" target="blank">Mani</a>
+        <p>mani is very very worst girl</p>
+        <img src="assets/writer.jpg" class="picture"/>
+        <p>Aswanth is a very good boy</p>
+        <a href="https://connect.zoho.com/portal/zohoschools-2024/tags/js">connect</a>
+            </div>
         </div>
     </div>
   </div>
